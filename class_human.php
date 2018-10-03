@@ -1,3 +1,4 @@
+<?php
 class Human 
 { 
 	protected $firstName;
@@ -19,3 +20,4 @@ public function getFullName()
 }
 
 }
+?>
