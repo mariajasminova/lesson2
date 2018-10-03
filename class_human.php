@@ -5,7 +5,7 @@ class Human
 	protected $lastName;
 	protected $age;
 
-public function setFullName($firstName, $lastName, $age)
+public function __construct($firstName, $lastName, $age)
 {
 	$this->firstName = $firstName;
 	$this->lastName = $lastName;
@@ -13,11 +13,12 @@ public function setFullName($firstName, $lastName, $age)
 
 }
 
-public function getFullName()
-{
-	return $this->firstName . ' ' . $this->lastName . ' ' . $this->age;
+	public function getInfo()
+	{
+		$info = "{$this->firstName}".' '."{$this->lastName}".' '."{$this->age}";
+		return $info;
 
-}
+	}
 
 }
 ?>
