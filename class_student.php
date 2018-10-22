@@ -6,9 +6,9 @@ class Student extends Human
 	private $course;
 	private $rating;
 
-	public function __construct($firstName, $lastName, $age, $course, $form_educ)
+	public function __construct(string $firstName, string $lastName, int $age, int $course, string $form_educ)
 	{
-		parent::__construct($firstName, $lastName, $age);
+		parent::__construct(string $firstName, string $lastName, int $age);
 		$this->course = $course;
 		$this->form_educ = $form_educ;
 	}

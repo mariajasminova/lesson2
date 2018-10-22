@@ -6,7 +6,7 @@
  /**
  * 
  */
-class Menager extends Employee
+class Menager 
 {
 	private $employees = [];
 
@@ -15,22 +15,24 @@ class Menager extends Employee
 			
 		}	
 
-	 public function setEmployee($firstName, $lastName, $age) //, $date, $salary
+	 public function add(Employee $employee) 
 	{
-		$this->employees[] = new Employee($firstName, $lastName, $age);
+		$this->employees[] = $employee;
 	
 	}
 		
 	 public function getInfo()
 	{
-			var_dump($this->employees);
+		foreach ($this->employees as $key => $value) {
+			echo $key . " " /*.$value. "</br>" */ ; 
 	}
 
 }
 
 
+$employee = new Employee('Igor', 'Svetlov', 19, '30/01/2018', 35000);
 $menager = new Menager();
-$menager->setEmployee('Igor', 'Svetlov', 19);
+$menager->add($employee);
 $menager->getInfo();
 
 
