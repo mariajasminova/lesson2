@@ -4,21 +4,41 @@ class Human
 	protected $firstName;
 	protected $lastName;
 	protected $age;
+	public static $count_human = 0;
 
-public function __construct(string $firstName, string $lastName, int $age)
+function __construct(string $firstName, string $lastName, int $age)
 {
 	$this->firstName = $firstName;
 	$this->lastName = $lastName;
 	$this->age = $age;
+  self::$count_human++;
 
 }
 
-	public function getInfo()
+ protected function getFiratName()
+ {
+ 	return $this->firstName;
+ }
+
+ public function getLastName()
+ {
+ 	return $this->lastName;
+ }
+
+ protected function getAge()
+ {
+ 	return $this->age;
+ }
+
+	public function viewInfoString()
 	{
-		$info = "{$this->firstName}".' '."{$this->lastName}".' '."{$this->age}";
+		$info = $this->firstName . " ". $this->lastName . ", лет: " . $this->age;
 		return $info;
 
 	}
 
 }
+
+
+
 ?>

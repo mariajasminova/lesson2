@@ -1,47 +1,62 @@
 <?php
 
- include 'class_human.php';
+ //include 'class_human.php';
 
 /**
 * 
 */
 class Employee extends Human
 {
-	private $paymentdate = [];
+	protected $paymentdate = [];
 	const FIX_PRICE = 35000;
+	public static $count_emploee = 0;
+	//private $fullinfo;
 		
-	public function __construct(string $firstName, string $lastName, int $age, string $date, int $salary)
+	function __construct(string $firstName, string $lastName, int $age, string $date, int $salary)
 	{
-		parent::__construct(string $firstName, string $lastName, int $age);
+		parent::__construct($firstName, $lastName, $age);
 		$this->paymentdate += [$date => $salary];
+		self::$count_emploee++;
+		//$this->fullinfo = '!!!!!!!!'.$this->getFiratName() . ' ' . $this->getLastName() . ' ' . $this->getAge() . ' ' . $this->getPaymentDate();
 	}
 
-/*	public function setPaymentDate(string $date, int $salary)
-	{
-		$this->paymentdate += [$date => $salary];
-	}
-*/
-
-	public function addPaymentDate(string $date, $salary = self::FIX_PRICE)
+	public function addPaymentDate(string $date, int $salary = 35000)
 	{
 		$this->paymentdate += [$date => $salary];
 	}
 
-	public function getInfo()
+	protected function getPaymentDate()
 	{
-		$info = parent::getInfo();
-		echo "</br>";
+		$viewpaymentdate ='Дата - Зарплата: ';
 		foreach ($this->paymentdate as $key => $value) {
-			echo $key . " " .$value. "</br>";
+			$viewpaymentdate .=  $key . " - " .$value . ', ';
 		}
+		return $viewpaymentdate;
 	}
+
+	public function viewInfoString()
+	{
+		$info = parent::viewInfoString() .', '. $this->getPaymentDate();
+		echo $info;
+		
+	}
+
 
 }
 
-$employee = new Employee('Igor', 'Svetlov', 19, '30/01/2018', 35000);
-//$employee->setPaymentDate('30/01/2018', 35000);
-$employee->addPaymentDate('28/02/2018', NULL);
-$employee->getInfo();
+$employee = new Employee('Игорь', 'Светлов', 19, '30/01/2018', 35000);
+$employee->addPaymentDate('28/02/2018');
+$employee->viewInfoString();
+$h = new Human('Игорь', 'Светлов', 19);
 
+echo "</br>";
+echo "количество экземпляров класса \"Human\": " . Human::$count_human;
+echo "</br>";
+echo "количество экземпляров класса \"Employee\": " . Employee::$count_emploee;
+echo "</br>";
+
+
+
+//echo Employee::$fullinfo;
 
 ?>
